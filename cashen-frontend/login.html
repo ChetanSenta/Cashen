@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Cashen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- RESPONSIVE CSS SETUP --- */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            /* Fix for mobile keyboard cutting off content */
+            background: var(--bg-body);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Left Side (Desktop Only) */
+        .auth-info-side {
+            flex: 1.2;
+            background: var(--primary-gradient);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px;
+            color: white;
+            position: relative;
+        }
+
+        /* Right Side (Form) */
+        .auth-form-side {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .auth-card-wide {
+            width: 100%;
+            max-width: 420px;
+            padding: 40px;
+            background: var(--bg-surface);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        /* --- MOBILE & TABLET BREAKPOINTS --- */
+        @media (max-width: 1024px) {
+            .auth-info-side {
+                display: none;
+                /* Hide decorative side */
+            }
+
+            .auth-form-side {
+                background: var(--bg-body);
+                min-height: 100vh;
+            }
+
+            .auth-card-wide {
+                padding: 30px 20px;
+                box-shadow: none;
+                border: none;
+                background: transparent;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="auth-info-side">
+        <div class="brand" style="border:none; justify-content: flex-start; margin-bottom: 20px;">
+            <span style="font-size: 2rem; font-weight: 800; letter-spacing: -1px;">CASHEN</span>
+        </div>
+
+        <h1>Smart Financial <br> Tracking.</h1>
+        <p style="margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6; opacity: 0.9;">
+            A powerful web application designed for tracking daily expenses, managing budgets, and analyzing spending
+            habits. Cashen simplifies financial data entry and visualization.
+        </p>
+
+        <ul class="feature-list" style="list-style: none; padding: 0;">
+            <li class="feature-item"
+                style="margin-bottom: 20px; display: flex; align-items: center; gap: 15px; font-size: 1.1rem;">
+                <i class="fas fa-edit"
+                    style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 12px; width: 40px; text-align: center;"></i>
+                <span><strong>Expense Management</strong> – Add and edit transactions easily.</span>
+            </li>
+            <li class="feature-item"
+                style="margin-bottom: 20px; display: flex; align-items: center; gap: 15px; font-size: 1.1rem;">
+                <i class="fas fa-wallet"
+                    style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 12px; width: 40px; text-align: center;"></i>
+                <span><strong>Smart Budgeting</strong> – Set limits and track progress.</span>
+            </li>
+            <li class="feature-item"
+                style="margin-bottom: 20px; display: flex; align-items: center; gap: 15px; font-size: 1.1rem;">
+                <i class="fas fa-chart-pie"
+                    style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 12px; width: 40px; text-align: center;"></i>
+                <span><strong>Visual Analytics</strong> – Insightful graphs and reports.</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="auth-form-side">
+        <div class="auth-card-wide">
+            <h2 style="font-size: 2rem; margin-bottom: 10px;">Login</h2>
+            <p style="color:var(--text-muted); margin-bottom: 30px;">Enter your credentials to access your dashboard.
+            </p>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" class="input-field" required placeholder="name@email.com">
+                    <div class="input-error" id="emailError"></div>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" class="input-field" required placeholder="••••••••">
+                    <div class="input-error" id="passwordError"></div>
+                </div>
+                <button type="submit" class="btn btn-primary full-width">Sign In</button>
+            </form>
+
+            <div id="forgotPasswordPane" style="display:none; margin-top:20px;">
+                <h3 style="font-size:1.4rem; margin-bottom:10px;">Reset Password</h3>
+                <p style="color:var(--text-muted); margin-bottom:10px;">Enter your email to receive a temporary password.</p>
+                <form id="forgotPasswordForm">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="forgotEmail" class="input-field" required placeholder="name@email.com">
+                        <div class="input-error" id="forgotEmailError"></div>
+                    </div>
+                    <button type="submit" class="btn btn-secondary full-width">Request Reset</button>
+                </form>
+                <p style="text-align:center; margin-top:10px; font-size:0.9rem;">
+                    <a href="#" id="backToLogin" style="color:var(--primary); font-weight:700; text-decoration:none;">Back to login</a>
+                </p>
+            </div>
+
+            <p style="text-align:center; margin-top:25px; font-size:0.95rem;">
+                Don't have an account? <a href="register.html"
+                    style="color:var(--primary); font-weight:700; text-decoration:none;">Create one</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- ALERT MODAL (shared style with logout/confirm) -->
+    <div id="alertModal" class="modal-overlay hidden">
+        <div class="modal-content center-card">
+            <div id="alertIconBox" class="status-icon success">
+                <i id="alertIcon" class="fas fa-check"></i>
+            </div>
+
+            <h3 id="alertTitle" style="margin-bottom:10px; font-size:1.5rem;">Success</h3>
+            <p id="alertMsg" style="margin-bottom:25px; color:var(--text-muted); line-height:1.5;">
+                Operation completed.
+            </p>
+
+            <button class="btn btn-primary full-width" onclick="UI.closeModals()">Okay, Got it</button>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:5001';
+
+        const UI = {
+            showAlert(title, msg) {
+                document.getElementById("alertTitle").innerText = title;
+                document.getElementById("alertMsg").innerText = msg;
+
+                const iconBox = document.getElementById("alertIconBox");
+                const icon = document.getElementById("alertIcon");
+
+                iconBox.classList.remove("success", "danger");
+                icon.className = "";
+
+                const isError = /error|failed|incorrect|invalid/i.test(title);
+                if (isError) {
+                    iconBox.classList.add("danger");
+                    icon.classList.add("fas", "fa-times");
+                } else {
+                    iconBox.classList.add("success");
+                    icon.classList.add("fas", "fa-check");
+                }
+
+                document.getElementById("alertModal").classList.remove("hidden");
+            },
+            closeModals() {
+                document.getElementById("alertModal").classList.add("hidden");
+            },
+        };
+
+        const setFieldError = (fieldId, message) => {
+            const input = document.getElementById(fieldId);
+            const err = document.getElementById(`${fieldId}Error`);
+
+            if (!input || !err) return;
+
+            if (message) {
+                input.classList.add('error-border');
+                err.textContent = message;
+                err.classList.add('active');
+            } else {
+                input.classList.remove('error-border');
+                err.textContent = '';
+                err.classList.remove('active');
+            }
+        };
+
+        const clearFieldErrors = () => {
+            setFieldError('email', '');
+            setFieldError('password', '');
+        };
+
+        document.getElementById('email').addEventListener('input', () => setFieldError('email', ''));
+        document.getElementById('password').addEventListener('input', () => setFieldError('password', ''));
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearFieldErrors();
+
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+
+            if (!email) {
+                setFieldError('email', 'Email is required.');
+                return;
+            }
+
+            if (!password) {
+                setFieldError('password', 'Password is required.');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    localStorage.setItem('cashen_token', data.token);
+                    localStorage.setItem('cashen_user_name', data.user.name);
+                    localStorage.setItem('cashen_user_email', data.user.email);
+                    window.location.href = 'index.html';
+                } else {
+                    const errMsg = (data || '').toString();
+                    if (/incorrect|wrong/i.test(errMsg)) {
+                        setFieldError('password', 'Wrong username or password');
+                    } else if (/not found|user/i.test(errMsg)) {
+                        setFieldError('email', 'User not found');
+                    } else {
+                        UI.showAlert('Error', `Login failed: ${errMsg || 'Check credentials'}`);
+                    }
+                }
+            } catch (err) {
+                console.error(err);
+                UI.showAlert('Error', 'Server error. Is the backend running?');
+            }
+        });
+    </script>
+</body>
+
+</html>
