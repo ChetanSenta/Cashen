@@ -138,11 +138,9 @@ During this project, we:
 
 ## 🚀 Future Enhancements
 
-- 📄 Export reports (PDF/CSV)  
-- 🧾 Receipt scanning (OCR)  
+- 📄 Export reports (CSV)  
 - 🤖 AI-based expense prediction  
-- 🌙 Dark mode UI  
-- 📱 Mobile app version  
+- 🌙 Dark mode UI
 
 ---
 
