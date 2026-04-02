@@ -52,6 +52,16 @@ CASHEN/
 │   ├── register.html
 │   ├── style.css
 │   └── logo.png
+|
+├── Database/
+│   ├── create_tables.sql
+│   ├── insert_data.sql
+|
+├── Design/
+│   ├── Relational_Schema.png
+|
+├── Report/
+│   ├── SRS of CASHEN.pdf
 │
 └── README.md
 ```
